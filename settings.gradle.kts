@@ -13,5 +13,5 @@ dependencyResolutionManagement {
         maven { url = java.net.URI("https://api.xposed.info/") }
     }
 }
-rootProject.name = "HmsVpnUnveil"
+rootProject.name = "hms_unveil"
 include(":app")
