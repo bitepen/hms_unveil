@@ -20,16 +20,18 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-          cache: 'gradle'
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.10.2'
 
       - name: Build with Gradle
-        run: ./gradlew assembleRelease --stacktrace
+        run: gradle assembleDebug --stacktrace
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: HmsVpnUnveil-Release
-          path: app/build/outputs/apk/release/*.apk
+          name: HmsVpnUnveil-Debug
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
